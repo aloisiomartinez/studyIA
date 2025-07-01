@@ -1,4 +1,4 @@
-package com.example.rocketia.data.api
+package com.example.rocketia.data.remote.api
 
 interface AIAPIService {
 

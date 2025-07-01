@@ -1,13 +1,13 @@
 package com.example.rocketia.data.datasource
 
-import com.example.rocketia.data.local.database.AiChatTextEntity
+import com.example.rocketia.data.local.database.AIChatTextEntity
 import kotlinx.coroutines.flow.Flow
 
 interface AIChatLocalDataSource {
 
-    val aiCurrentChatBySelectedStack: Flow<List<AiChatTextEntity>>
+    val aiCurrentChatBySelectedStack: Flow<List<AIChatTextEntity>>
 
-    suspend fun insertAiChatConversation(question: AiChatTextEntity, answer: AiChatTextEntity)
+    suspend fun insertAIChatConversation(question: AIChatTextEntity, answer: AIChatTextEntity)
 
     val selectedStack: Flow<String>
 
@@ -15,6 +15,6 @@ interface AIChatLocalDataSource {
 
     val firstLaunch: Flow<Boolean>
 
-    suspend fun changeFirstLaunch(firstLaunch: Boolean)
+    suspend fun changeFirstLaunch()
 
 }

@@ -1,0 +1,14 @@
+package com.example.rocketia.data.local.database
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class AIChatTextEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val from: String,
+    val stack: String,
+    val dateTime: Long,
+    val text: String
+)
