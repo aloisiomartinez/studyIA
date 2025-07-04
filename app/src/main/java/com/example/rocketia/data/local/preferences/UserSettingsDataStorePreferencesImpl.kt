@@ -22,27 +22,15 @@ class UserSettingsDataStorePreferencesImpl(
 
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = USER_SETTINGS_DATASTORE_NAME)
 
-    override val selectedStack: Flow<String>
+    override val selectedStack: Flow<String?>
         get() = context.dataStore.data.map {
             preferences ->
-                preferences[SELECTED_STACK_PREFERENCES_KEY].orEmpty()
+                preferences[SELECTED_STACK_PREFERENCES_KEY]
         }
 
     override suspend fun changeSelectedStack(stack: String) {
         context.dataStore.edit { settings ->
             settings[SELECTED_STACK_PREFERENCES_KEY] = stack
-        }
-    }
-
-    override val firstLaunch: Flow<Boolean>
-        get() = context.dataStore.data.map { preferences ->
-            preferences[FIRST_LAUNCH_PREFERENCES_KEY] != false
-        }
-
-    override suspend fun changeFirstLaunch() {
-        context.dataStore.edit { settings ->
-            val currentFirstLaunch = settings[FIRST_LAUNCH_PREFERENCES_KEY] != false
-            settings[FIRST_LAUNCH_PREFERENCES_KEY] = !currentFirstLaunch
         }
     }
 }
