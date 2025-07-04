@@ -1,4 +1,4 @@
-package com.example.rocketia.ui
+package com.example.rocketia.ui.state
 
 /**
  * A sealed hierarchy describing the state of the text generation.
