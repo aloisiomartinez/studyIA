@@ -7,7 +7,7 @@ import com.example.rocketia.data.datasource.AIChatRemoteDataSource
 import com.example.rocketia.data.datasource.AiChatRemoteDataSourceImpl
 import com.example.rocketia.data.local.database.AIChatHistoryDao
 import com.example.rocketia.data.local.database.ROCKET_AI_DATABASE_NAME
-import com.example.rocketia.data.local.database.RocketIADatabase
+import com.example.rocketia.data.local.database.RocketAIDatabase
 import com.example.rocketia.data.local.preferences.UserSettingsDataStorePreferencesImpl
 import com.example.rocketia.data.local.preferences.UserSettingsPreferences
 import com.example.rocketia.data.remote.api.AIAPIService
@@ -32,14 +32,14 @@ val dataModule = module {
 
     single<AIAPIService> { AIGeminiAPIServiceImpl() }
     single<UserSettingsPreferences> { UserSettingsDataStorePreferencesImpl(context = androidApplication()) }
-    single<RocketIADatabase> {
+    single<RocketAIDatabase> {
         Room.databaseBuilder(
             androidApplication(),
-            RocketIADatabase::class.java,
+            RocketAIDatabase::class.java,
             ROCKET_AI_DATABASE_NAME
         ).build()
     }
-    single<AIChatHistoryDao> { get<RocketIADatabase>().aiChatHistoryDao() }
+    single<AIChatHistoryDao> { get< RocketAIDatabase>().aiChatHistoryDao() }
 
     single<AIChatLocalDataSource> { AIChatLocalDataSourceImpl(get(named("IO")), get(), get()) }
     single<AIChatRemoteDataSource> { AiChatRemoteDataSourceImpl(get(named("IO")), get()) }

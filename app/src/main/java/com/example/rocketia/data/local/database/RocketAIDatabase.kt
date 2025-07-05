@@ -6,6 +6,6 @@ import androidx.room.RoomDatabase
 const val ROCKET_AI_DATABASE_NAME = "rocket_ai_db"
 
 @Database(entities = [AIChatTextEntity::class], version = 1)
-abstract class RocketIADatabase: RoomDatabase() {
+abstract class RocketAIDatabase: RoomDatabase() {
     abstract fun aiChatHistoryDao(): AIChatHistoryDao
 }
