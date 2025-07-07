@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.rocketia.R
 import com.example.rocketia.databinding.FragmentWelcomeBinding
 import com.example.rocketia.ui.event.WelcomeUiEvent
 import com.example.rocketia.ui.viewmodel.WelcomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class WelcomeFragment : Fragment() {
 
-    private val viewModel: WelcomeViewModel by viewModel()
+    //private val viewModel: WelcomeViewModel by viewModel()
+    private val viewModel: WelcomeViewModel by viewModels()
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get()  = _binding!!

@@ -1,9 +1,10 @@
 package com.example.rocketia.domain.usecase
 
 import com.example.rocketia.domain.repository.AIChatRepository
+import javax.inject.Inject
 
 
-class SendUserQuestionUseCase (
+class SendUserQuestionUseCase @Inject constructor(
     private val repository: AIChatRepository
 ) {
 
