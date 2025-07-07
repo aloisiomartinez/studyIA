@@ -41,18 +41,31 @@ val dataModule = module {
     }
     single<AIChatHistoryDao> { get< RocketAIDatabase>().aiChatHistoryDao() }
 
-    single<AIChatLocalDataSource> { AIChatLocalDataSourceImpl(get(named("IO")), get(), get()) }
-    single<AIChatRemoteDataSource> { AiChatRemoteDataSourceImpl(get(named("IO")), get()) }
+    single<AIChatLocalDataSource> {
+        AIChatLocalDataSourceImpl(
+            ioDispatcher = get(named("IO")),
+            aiChatHistoryDao = get<AIChatHistoryDao>(),
+            userSettingsPreferences = get<UserSettingsPreferences>())
+    }
+    single<AIChatRemoteDataSource> {
+        AiChatRemoteDataSourceImpl(
+            ioDispatcher = get(named("IO")),
+            aiApiService = get<AIAPIService>())
+    }
 
-    single<AIChatRepository> { AIChatRepositoryImpl(get(), get()) }
+    single<AIChatRepository> {
+        AIChatRepositoryImpl(
+            aiChatLocalDataSource = get<AIChatLocalDataSource>(),
+            aiChatRemoteDataSource = get<AIChatRemoteDataSource>())
+    }
 }
 
 val domainModule = module {
-    factory { ChangeStackUseCase(get()) }
-    factory { CheckHasSelectedStackUseCase(get()) }
-    factory { GetAIChatBySelectedStackUseCase(get()) }
-    factory { GetSelectedStackUseCase(get()) }
-    factory { SendUserQuestionUseCase(get()) }
+    factory { ChangeStackUseCase(repository = get<AIChatRepository>()) }
+    factory { CheckHasSelectedStackUseCase(repository = get<AIChatRepository>()) }
+    factory { GetAIChatBySelectedStackUseCase(repository = get<AIChatRepository>()) }
+    factory { GetSelectedStackUseCase(repository = get<AIChatRepository>()) }
+    factory { SendUserQuestionUseCase(repository = get<AIChatRepository>()) }
 
 }
 

@@ -4,7 +4,7 @@ import com.example.rocketia.domain.repository.AIChatRepository
 import kotlinx.coroutines.flow.firstOrNull
 import javax.inject.Inject
 
-class CheckHasSelectedStackUseCase @Inject constructor(
+class CheckHasSelectedStackUseCase(
     private val repository: AIChatRepository
 ) {
     suspend operator fun invoke(): Boolean =

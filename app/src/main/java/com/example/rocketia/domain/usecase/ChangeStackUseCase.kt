@@ -4,7 +4,7 @@ import com.example.rocketia.domain.model.AIChatTextType
 import com.example.rocketia.domain.repository.AIChatRepository
 import javax.inject.Inject
 
-class ChangeStackUseCase @Inject constructor (
+class ChangeStackUseCase (
     private val repository: AIChatRepository
 ) {
 

@@ -4,7 +4,7 @@ import com.example.rocketia.domain.repository.AIChatRepository
 import javax.inject.Inject
 
 
-class SendUserQuestionUseCase @Inject constructor(
+class SendUserQuestionUseCase(
     private val repository: AIChatRepository
 ) {
 

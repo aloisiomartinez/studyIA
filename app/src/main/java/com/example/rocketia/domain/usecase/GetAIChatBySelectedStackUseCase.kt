@@ -5,7 +5,7 @@ import com.example.rocketia.domain.repository.AIChatRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAIChatBySelectedStackUseCase @Inject constructor(
+class GetAIChatBySelectedStackUseCase(
     private val repository: AIChatRepository
 ) {
 
