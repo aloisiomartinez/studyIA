@@ -41,7 +41,7 @@ class AIChatViewModel(
 
     private fun sendUserQuestionToAI(question: String) {
         viewModelScope.launch {
-            sendUserQuestionUseCase.invoke(question = question, stack = "".)
+            sendUserQuestionUseCase.invoke(question = question, stack = "")
         }
     }
 }
