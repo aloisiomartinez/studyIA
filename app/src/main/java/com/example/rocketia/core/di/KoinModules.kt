@@ -19,11 +19,13 @@ import com.example.rocketia.domain.usecase.CheckHasSelectedStackUseCase
 import com.example.rocketia.domain.usecase.GetAIChatBySelectedStackUseCase
 import com.example.rocketia.domain.usecase.GetSelectedStackUseCase
 import com.example.rocketia.domain.usecase.SendUserQuestionUseCase
+import com.example.rocketia.ui.viewmodel.AIChatViewModel
 import com.example.rocketia.ui.viewmodel.ChooseStackViewModel
 import com.example.rocketia.ui.viewmodel.WelcomeViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -73,4 +75,5 @@ val domainModule = module {
 val uiModule = module {
     viewModelOf(::WelcomeViewModel)
     viewModelOf(::ChooseStackViewModel)
+    viewModelOf(::AIChatViewModel)
 }

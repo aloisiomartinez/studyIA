@@ -58,8 +58,8 @@ class ChooseStackFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.selectedStackChipId.collect { selectedStackChipId ->
                         selectedStackChipId?.let {
