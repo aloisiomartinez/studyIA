@@ -19,6 +19,7 @@ import com.example.rocketia.domain.usecase.CheckHasSelectedStackUseCase
 import com.example.rocketia.domain.usecase.GetAIChatBySelectedStackUseCase
 import com.example.rocketia.domain.usecase.GetSelectedStackUseCase
 import com.example.rocketia.domain.usecase.SendUserQuestionUseCase
+import com.example.rocketia.ui.viewmodel.ChooseStackViewModel
 import com.example.rocketia.ui.viewmodel.WelcomeViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -71,4 +72,5 @@ val domainModule = module {
 
 val uiModule = module {
     viewModelOf(::WelcomeViewModel)
+    viewModelOf(::ChooseStackViewModel)
 }
